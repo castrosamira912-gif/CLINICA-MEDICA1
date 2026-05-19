@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Historial Médico</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* =========================
+   BODY
+========================= */
+body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',sans-serif;
+    color:#111;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar{
+    background:#0f0f10 !important;
+    padding:14px 20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-brand{
+    font-weight:700;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.btn{
+    border-radius:10px;
+    transition:0.25s ease;
+    font-weight:500;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-outline-light{
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+.btn-outline-light:hover{
+    background:#fff;
+    color:#000;
+}
+
+.btn-warning{
+    background:#ff7a00;
+    border:none;
+    color:#fff;
+}
+
+.btn-warning:hover{
+    background:#ff8f1f;
+    box-shadow:0 10px 25px rgba(255,122,0,0.3);
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+.historial-box{
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    margin-top:50px;
+    box-shadow:0 8px 22px rgba(0,0,0,0.08);
+    animation:fadeIn .6s ease;
+}
+
+/* =========================
+   TITULO
+========================= */
+h2{
+    font-weight:800;
+    margin-bottom:30px;
+}
+
+/* =========================
+   TABLA
+========================= */
+.table{
+    overflow:hidden;
+    border-radius:14px;
+}
+
+.table thead{
+    background:#111;
+    color:#fff;
+}
+
+.table thead th{
+    padding:16px;
+    border:none;
+}
+
+.table tbody td{
+    padding:16px;
+    vertical-align:middle;
+}
+
+.table tbody tr{
+    transition:0.25s ease;
+}
+
+.table tbody tr:hover{
+    background:#f8f9fa;
+    transform:scale(1.01);
+}
+
+/* =========================
+   BADGES
+========================= */
+.badge-medico{
+    background:#ff7a00;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* =========================
+   ANIMACION
+========================= */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+    <a class="navbar-brand text-white" href="/">
+        Clínica Médica
+    </a>
+
+    <div class="ms-auto">
+
+        <a class="btn btn-outline-light btn-sm me-2" href="/">
+            Inicio
+        </a>
+
+        <a class="btn btn-outline-light btn-sm me-2" href="/pacientes">
+            Pacientes
+        </a>
+
+        <a class="btn btn-outline-light btn-sm me-2" href="/consultas">
+            Consultas
+        </a>
+
+        <a class="btn btn-warning btn-sm" href="/logout">
+            Cerrar Sesión
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- CONTENIDO -->
+<div class="container">
+
+    <div class="historial-box">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h2>
+                    Historial Médico de {{ paciente.nombre }}
+                </h2>
+
+                <p class="text-muted">
+                    Registro completo de consultas del paciente.
+                </p>
+            </div>
+
+            <a href="/pacientes" class="btn btn-warning">
+                ← Volver
+            </a>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Diagnóstico</th>
+                        <th>Tratamiento</th>
+                        <th>Médico</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {% for consulta in consultas %}
+
+                    <tr>
+
+                        <td>
+                            {{ consulta.fecha }}
+                        </td>
+
+                        <td>
+                            {{ consulta.diagnostico }}
+                        </td>
+
+                        <td>
+                            {{ consulta.tratamiento }}
+                        </td>
+
+                        <td>
+                            <span class="badge-medico">
+                                {{ consulta.medico.nombre }}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

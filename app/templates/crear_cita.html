@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-card">
+
+    <h2 class="mb-4">
+
+        Nueva Cita
+
+    </h2>
+
+    <form method="POST">
+
+        <input
+        type="date"
+        name="fecha"
+        class="form-control mb-3"
+        required>
+
+        <input
+        type="time"
+        name="hora"
+        class="form-control mb-3"
+        required>
+
+        <input
+        type="text"
+        name="motivo"
+        placeholder="Motivo"
+        class="form-control mb-3"
+        required>
+
+        <select
+        name="id_medico"
+        class="form-control mb-3">
+
+            {% for medico in medicos %}
+
+            <option
+            value="{{ medico.id_medico }}">
+
+                {{ medico.nombre }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <select
+        name="id_paciente"
+        class="form-control mb-3">
+
+            {% for paciente in pacientes %}
+
+            <option
+            value="{{ paciente.id_paciente }}">
+
+                {{ paciente.nombre }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <button class="btn btn-success">
+
+            Guardar Cita
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-card">
+
+    <h2>Editar Médico</h2>
+
+    <form method="POST">
+
+        <input
+        type="text"
+        name="nombre"
+        value="{{ medico.nombre }}"
+        class="form-control mb-3">
+
+        <input
+        type="text"
+        name="especialidad"
+        value="{{ medico.especialidad }}"
+        class="form-control mb-3">
+
+        <input
+        type="text"
+        name="telefono"
+        value="{{ medico.telefono }}"
+        class="form-control mb-3">
+
+        <input
+        type="email"
+        name="correo"
+        value="{{ medico.correo }}"
+        class="form-control mb-3">
+
+        <button class="btn btn-warning">
+
+            Actualizar
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

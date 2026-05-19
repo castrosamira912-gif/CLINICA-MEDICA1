@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inicio - Clínica Médica</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* =====================
+   BASE
+===================== */
+body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',sans-serif;
+    color:#111;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar{
+    background:#0f0f10 !important;
+    padding:14px 20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-brand{
+    font-weight:700;
+}
+
+/* =====================
+   BOTONES
+===================== */
+.btn{
+    border-radius:10px;
+    transition:0.25s ease;
+    font-weight:500;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* navbar botones */
+.btn-outline-light{
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+.btn-outline-light:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* naranja pro */
+.btn-warning{
+    background:#ff7a00;
+    border:none;
+    color:#fff;
+}
+
+.btn-warning:hover{
+    background:#ff8f1f;
+    box-shadow:0 10px 25px rgba(255,122,0,0.3);
+}
+
+/* =====================
+   CONTENEDOR
+===================== */
+.container{
+    animation:fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* =====================
+   TITULOS
+===================== */
+h2{
+    font-weight:700;
+}
+
+/* =====================
+   CARDS
+===================== */
+.card{
+    border:none;
+    border-radius:16px;
+    background:#fff;
+    transition:0.3s ease;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 35px rgba(0,0,0,0.12);
+}
+
+.card-title{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#666;
+}
+
+h1{
+    font-weight:800;
+    transition:0.3s ease;
+}
+
+.card:hover h1{
+    transform:scale(1.1);
+}
+
+/* colores neutros pro */
+.text-primary{ color:#111 !important; }
+.text-success{ color:#ff7a00 !important; }
+.text-danger{ color:#000 !important; }
+
+/* =====================
+   RESUMEN
+===================== */
+.bg-white{
+    border-radius:16px;
+    border:1px solid #eee;
+    transition:0.3s ease;
+}
+
+.bg-white:hover{
+    transform:scale(1.01);
+    box-shadow:0 12px 25px rgba(0,0,0,0.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand text-white" href="#">Clínica Médica</a>
+
+<div class="ms-auto">
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/">
+        Inicio
+    </a>
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/medicos">
+        Médicos
+    </a>
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/pacientes">
+        Pacientes
+    </a>
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/consultas">
+        Consultas
+    </a>
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/citas">
+        Agenda Citas
+    </a>
+
+    <a class="btn btn-outline-light btn-sm me-2" href="/exportar_consultas">
+        Exportar Excel
+    </a>
+
+    <a class="btn btn-warning btn-sm" href="/logout">
+        Cerrar Sesión
+    </a>
+
+</div>
+</nav>
+
+<!-- CONTENIDO -->
+<div class="container mt-5">
+
+    <h2 class="mb-4 text-center">Panel Principal</h2>
+
+    <!-- CARDS -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <h5 class="card-title">Médicos</h5>
+                <h1>{{ total_medicos }}</h1>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <h5 class="card-title">Pacientes</h5>
+                <h1>{{ total_pacientes }}</h1>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <h5 class="card-title">Consultas</h5>
+                <h1>{{ total_consultas }}</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="mt-5 p-4 bg-white shadow-sm">
+        <h4>Resumen del sistema</h4>
+        <p>
+            Bienvenido al sistema de gestión de la clínica.
+            Desde aquí puedes administrar médicos, pacientes y consultas médicas.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

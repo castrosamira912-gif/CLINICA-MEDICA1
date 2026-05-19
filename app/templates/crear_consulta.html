@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-card">
+
+    <h2 class="mb-4">
+
+        Nueva Consulta Médica
+
+    </h2>
+
+    <form method="POST">
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Fecha
+
+                </label>
+
+                <input
+                type="date"
+                name="fecha"
+                class="form-control"
+                required>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Médico
+
+                </label>
+
+                <select
+                name="id_medico"
+                class="form-select"
+                required>
+
+                    {% for medico in medicos %}
+
+                    <option value="{{ medico.id_medico }}">
+
+                        {{ medico.nombre }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Paciente
+
+            </label>
+
+            <select
+            name="id_paciente"
+            class="form-select"
+            required>
+
+                {% for paciente in pacientes %}
+
+                <option value="{{ paciente.id_paciente }}">
+
+                    {{ paciente.nombre }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Diagnóstico
+
+            </label>
+
+            <textarea
+            name="diagnostico"
+            class="form-control"
+            rows="4"
+            required></textarea>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Tratamiento
+
+            </label>
+
+            <textarea
+            name="tratamiento"
+            class="form-control"
+            rows="4"
+            required></textarea>
+
+        </div>
+
+        <button
+        type="submit"
+        class="btn btn-danger btn-custom">
+
+            <i class="bi bi-save"></i>
+
+            Guardar Consulta
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
